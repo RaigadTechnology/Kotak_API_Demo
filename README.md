@@ -5,3 +5,4 @@
 Kotak API Demo on Youtube
 This document hep you to get started with Kotak API algo trading with help of https://github.com/osparamatrix/ks-orderapi-python
 
+Get started Full details of Kotak API presentation from the Word document attached. 
