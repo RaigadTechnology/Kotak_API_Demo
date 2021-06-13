@@ -25,43 +25,10 @@ df_symbol_file = pd.read_csv('FNO_Stocks.csv')
 
 todaysdate = datetime.datetime.now().strftime("%d-%m-%Y")
 kotak_todaysdate = datetime.datetime.now().strftime("%d_%m_%Y")
-todaysdate_date = datetime.datetime.strptime(todaysdate, '%d-%m-%Y')
-
-df_trading_days = pd.read_csv('TradingDays.csv')
-for num_td in range(len(df_trading_days)-1):
-    if df_trading_days.iloc[num_td][0] == todaysdate :
-        #print (df_trading_days.iloc[num_td][0])
-        ptd =  (df_trading_days.iloc[num_td-1][0])
-        ptdd = datetime.datetime.strptime(ptd, "%d-%m-%Y").date()
-        kotak_ptd = ptdd.strftime( "%d_%m_%Y")
-        ytextdate = ptdd.strftime("%d%m%Y")
-        ytextdatestr = ptdd.strftime("%d-%m-%Y")
-        ytextdatestr = datetime.datetime.strptime(ytextdatestr, '%d-%m-%Y')
-        
-        ymdf = datetime.datetime.strptime(ptd, "%d-%m-%Y").date()
-        ymd = datetime.datetime.strptime((ymdf.strftime("%Y-%m-%d")), '%Y-%m-%d')
-        
-        nextd = (df_trading_days.iloc[num_td+1][0])
-        nextdd = datetime.datetime.strptime(nextd, "%d-%m-%Y").date()
-        nextdatestr = nextdd.strftime("%d-%m-%Y")
-        
-        
-        yDdnt = ptdd.strftime("%d")
-        yDmnt = ptdd.strftime("%m")
-        yDynt = ptdd.strftime("%Y")
-        yddt = int(yDdnt)
-        ydmt = int(yDmnt)
-        ydyt = int(yDynt)
-    else:
-        ptd =  (df_trading_days.iloc[num_td-1][0])
-        ptdd = datetime.datetime.strptime(ptd, "%d-%m-%Y").date()
-        kotak_ptd = ptdd.strftime( "%d_%m_%Y")        
-        break
-
-
+kotak_lastTradeDate = datetime.datetime.now().strftime("11_06_2021") ## Put last trading day date in format dd_mm_yyyy
 
 #instrument_token Equity:
-eq_it_url = 'https://preferred.kotaksecurities.com/security/production/TradeApiInstruments_Cash_'+kotak_todaysdate+'.txt'  ## Replace kotak_todaysdate with kotak_ptd for testing
+eq_it_url = 'https://preferred.kotaksecurities.com/security/production/TradeApiInstruments_Cash_'+kotak_todaysdate+'.txt'  ## Replace kotak_todaysdate with kotak_lastTradeDate for testing
 eq_it_req = requests.get(eq_it_url)
 eq_it_text_data = eq_it_req.text
 
