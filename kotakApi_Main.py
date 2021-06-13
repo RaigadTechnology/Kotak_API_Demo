@@ -52,6 +52,10 @@ for num_td in range(len(df_trading_days)-1):
         yddt = int(yDdnt)
         ydmt = int(yDmnt)
         ydyt = int(yDynt)
+    else:
+        ptd =  (df_trading_days.iloc[num_td-1][0])
+        ptdd = datetime.datetime.strptime(ptd, "%d-%m-%Y").date()
+        kotak_ptd = ptdd.strftime( "%d_%m_%Y")        
         break
 
 
