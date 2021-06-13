@@ -13,7 +13,7 @@ import random
 import requests
 import json
 from io import StringIO #to convert string data in data frame
-import kotakApi_UserLogin as kl
+import kotakApi_UserLogin_Demo as kl
 
 import ks_api_client
 from ks_api_client import ks_api
